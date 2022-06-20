@@ -59,7 +59,7 @@ my_cur = my_cnx.cursor()
 #streamlit.text("Hello from Snowflake:")
 #streamlit.text(my_data_row)
 
-my_cur.execute("select * from fruit_load_list;")
+my_cur.execute("select * from fruityvice;")
 my_data_row = my_cur.fetchone()
 streamlit.header("The fruit list contains: ")
 streamlit.dataframe(my_data_row)
