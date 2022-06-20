@@ -48,13 +48,19 @@ my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 
 #Snowflake Integration
-my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+
+#my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+#my_data_row = my_cur.fetchone()
+#streamlit.text("Hello from Snowflake:")
+#streamlit.text(my_data_row)
+
+my_cur.execute("SELECT * FROM DUAL")
 my_data_row = my_cur.fetchone()
 streamlit.text("Hello from Snowflake:")
 streamlit.text(my_data_row)
 
-#my_cur.execute("SELECT * from FRUIT_LOAD_LIST;")
-#my_data_row = my_cur.fetchone()
-#streamlit.header("The fruit list contains: ")
-#streamlit.dataframe(my_data_row)
+my_cur.execute("SELECT fruit_name from FRUIT_LOAD_LIST")
+my_data_row = my_cur.fetchone()
+streamlit.header("The fruit list contains: ")
+streamlit.dataframe(my_data_row)
 
